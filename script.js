@@ -877,13 +877,13 @@ function renderCharts(d) {
           {
             label: 'Assets',
             data: [d.savings, d.epf, d.asb, d.th, d.shares, d.property, d.vehicle, d.otherAss, 0, 0, 0, 0, 0, 0],
-            backgroundColor: '#0E7C7B',
+            backgroundColor: '#C9A84C',
             borderRadius: 4,
           },
           {
             label: 'Liabilities',
             data: [0, 0, 0, 0, 0, 0, 0, 0, d.lHome, d.lVehicle, d.lPersonal, d.lEdu, d.lCC, d.lOther],
-            backgroundColor: '#C0392B',
+            backgroundColor: '#0B1F3A',
             borderRadius: 4,
           }
         ]
@@ -928,7 +928,7 @@ function renderCharts(d) {
         labels: nonZeroLabels.length ? nonZeroLabels : ['No Income'],
         datasets: [{
           data: nonZeroData.length ? nonZeroData : [1],
-          backgroundColor: ['#0E7C7B','#14A8A7','#1A3A6B','#142850','#9BA3B0'],
+          backgroundColor: ['#C9A84C','#D4AF55','#0B1F3A','#132D52','#9E9888'],
           borderWidth: 0,
           hoverOffset: 6
         }]
