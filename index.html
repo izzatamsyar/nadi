@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NADI — Navigating Assets, Dependents and Financial Insights | UKM Faculty of Law</title>
+  <meta name="description" content="NADI is an educational digital platform developed by the Faculty of Law, UKM, for assessing family financial readiness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE
+═══════════════════════════════════════════ -->
+<div id="page-landing" class="page active">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-logos">
+        <!-- UKM Logo Placeholder -->
+        <div class="logo-placeholder ukm-logo" aria-label="UKM Logo">
+          <span class="logo-initials">UKM</span>
+        </div>
+        <!-- Divider -->
+        <div class="logo-divider"></div>
+        <!-- FUU Logo Placeholder -->
+        <div class="logo-placeholder fuu-logo" aria-label="Faculty of Law Logo">
+          <span class="logo-initials">FUU</span>
+        </div>
+      </div>
+      <div class="header-text">
+        <p class="header-faculty">Faculty of Law (FUU)</p>
+        <p class="header-university">Universiti Kebangsaan Malaysia (UKM)</p>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-link" onclick="scrollToSection('features')">Features</button>
+        <button class="nav-link" onclick="showPage('page-about')">About</button>
+        <button class="btn btn-primary btn-sm" onclick="showPage('page-assessment')">Start Assessment</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="container hero-inner">
+      <div class="hero-badge">Educational Platform · Islamic Banking & Takaful</div>
+      <h1 class="hero-title">
+        <span class="hero-nadi">NADI</span>
+      </h1>
+      <p class="hero-subtitle">Navigating Assets, Dependents and Financial Insights</p>
+      <p class="hero-tagline">Mapping Family Financial Readiness for a Resilient Future</p>
+      <p class="hero-desc">
+        NADI is an educational digital platform designed to assess family financial readiness through integrated analysis of assets, liabilities, dependents and financial protection arrangements. The platform supports authentic learning in Islamic Banking and Takaful education while promoting financial awareness among the public.
+      </p>
+      <div class="hero-developer">
+        <span class="dev-label">Developed by</span>
+        <span class="dev-name">Faculty of Law (FUU) · Universiti Kebangsaan Malaysia (UKM)</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" onclick="showPage('page-assessment')">
+          <span>Start Assessment</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn btn-outline btn-lg" onclick="showPage('page-about')">About NADI</button>
+      </div>
+    </div>
+    <!-- Decorative pulse rings -->
+    <div class="hero-rings" aria-hidden="true">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-label">Platform Capabilities</div>
+      <h2 class="section-title">What NADI Evaluates</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="feature-title">Family Financial Readiness Assessment</h3>
+          <p class="feature-desc">Evaluate family financial preparedness through structured financial profiling covering income, assets, liabilities and protection coverage.</p>
+          <div class="feature-tag">5-Step Assessment</div>
+        </div>
+        <div class="feature-card feature-card--accent">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feature-title">Financial Protection Analysis</h3>
+          <p class="feature-desc">Assess existing Takaful protection arrangements and identify potential financial vulnerabilities for long-term family resilience.</p>
+          <div class="feature-tag">Takaful · Hibah · Wasiat</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3 class="feature-title">Educational Learning Tool</h3>
+          <p class="feature-desc">Support authentic and experiential learning in Islamic Banking and Takaful education at university and professional levels.</p>
+          <div class="feature-tag">Islamic Finance · Takaful Law</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container stats-inner">
+      <div class="stat-item">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Assessment Modules</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Analysis Dimensions</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">100</span>
+        <span class="stat-label">Point Readiness Index</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">12</span>
+        <span class="stat-label">Report Sections</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-nadi">NADI</span>
+        <p class="footer-sub">Navigating Assets, Dependents and Financial Insights</p>
+      </div>
+      <div class="footer-dev">
+        <p>Developed by</p>
+        <p><strong>Faculty of Law (FUU)</strong></p>
+        <p>Universiti Kebangsaan Malaysia (UKM)</p>
+      </div>
+      <div class="footer-disclaimer">
+        <p>This platform is intended for educational and learning purposes only and does not constitute financial, legal, takaful or investment advice.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Faculty of Law (FUU), Universiti Kebangsaan Malaysia (UKM). All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT PAGE
+═══════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="sub-header">
+    <div class="container sub-header-inner">
+      <button class="back-btn" onclick="showPage('page-landing')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Home
+      </button>
+      <div class="sub-header-brand">NADI</div>
+    </div>
+  </div>
+  <div class="container about-content">
+    <div class="section-label">About the Platform</div>
+    <h1 class="section-title">NADI — Navigating Assets, Dependents and Financial Insights</h1>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Platform Overview</h3>
+        <p>NADI is a digital educational platform developed by the Faculty of Law (FUU), Universiti Kebangsaan Malaysia (UKM). The platform assists users in assessing their family's financial readiness through a structured five-step assessment covering family structure, income sources, assets, liabilities, financial protection and financial continuity planning.</p>
+      </div>
+      <div class="about-block">
+        <h3>Educational Purpose</h3>
+        <p>The application is designed to support authentic learning in Islamic Banking and Takaful education. It provides a practical, hands-on environment for students to understand real-world financial planning concepts within an Islamic finance framework, including Takaful, Hibah and Wasiat.</p>
+      </div>
+      <div class="about-block">
+        <h3>NADI Readiness Index</h3>
+        <p>NADI generates a proprietary Family Financial Readiness Index scored from 0 to 100, categorised as Critical, Vulnerable, Developing or Resilient. The index is computed from five analytical dimensions: Family Dependency, Financial Risk, Protection Adequacy, Financial Continuity and Wealth Preservation.</p>
+      </div>
+      <div class="about-block">
+        <h3>Disclaimer</h3>
+        <p>This platform is intended solely for educational and learning purposes. The results, scores and recommendations generated by NADI do not constitute financial, legal, Takaful or investment advice. Users are encouraged to consult qualified professionals for personalised financial guidance.</p>
+      </div>
+    </div>
+    <div class="about-cta">
+      <button class="btn btn-primary btn-lg" onclick="showPage('page-assessment')">Start Your Assessment</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ASSESSMENT PAGE
+═══════════════════════════════════════════ -->
+<div id="page-assessment" class="page">
+  <div class="sub-header">
+    <div class="container sub-header-inner">
+      <button class="back-btn" onclick="confirmBack()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Home
+      </button>
+      <div class="sub-header-brand">NADI</div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="container">
+      <div class="progress-steps">
+        <div class="progress-step active" id="ps-1">
+          <div class="ps-circle">1</div>
+          <span class="ps-label">Family</span>
+        </div>
+        <div class="progress-line" id="pl-1"></div>
+        <div class="progress-step" id="ps-2">
+          <div class="ps-circle">2</div>
+          <span class="ps-label">Income</span>
+        </div>
+        <div class="progress-line" id="pl-2"></div>
+        <div class="progress-step" id="ps-3">
+          <div class="ps-circle">3</div>
+          <span class="ps-label">Assets</span>
+        </div>
+        <div class="progress-line" id="pl-3"></div>
+        <div class="progress-step" id="ps-4">
+          <div class="ps-circle">4</div>
+          <span class="ps-label">Liabilities</span>
+        </div>
+        <div class="progress-line" id="pl-4"></div>
+        <div class="progress-step" id="ps-5">
+          <div class="ps-circle">5</div>
+          <span class="ps-label">Protection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="assessment-body">
+    <div class="container">
+
+      <!-- ── STEP 1: FAMILY PROFILE ── -->
+      <div class="step-panel active" id="step-1">
+        <div class="step-header">
+          <div class="step-number">Step 1 of 5</div>
+          <h2 class="step-title">Family Profile</h2>
+          <p class="step-desc">Provide basic information about your family structure and demographics.</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="f-name">Full Name <span class="required">*</span></label>
+            <input type="text" id="f-name" placeholder="e.g. Ahmad bin Abdullah" />
+          </div>
+          <div class="form-group">
+            <label for="f-age">Age <span class="required">*</span></label>
+            <input type="number" id="f-age" placeholder="e.g. 35" min="18" max="100" />
+          </div>
+          <div class="form-group">
+            <label for="f-gender">Gender <span class="required">*</span></label>
+            <select id="f-gender">
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-marital">Marital Status <span class="required">*</span></label>
+            <select id="f-marital">
+              <option value="">Select status</option>
+              <option value="single">Single</option>
+              <option value="married">Married</option>
+              <option value="divorced">Divorced</option>
+              <option value="widowed">Widowed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-children">Number of Children</label>
+            <input type="number" id="f-children" placeholder="e.g. 2" min="0" max="20" value="0" />
+          </div>
+          <div class="form-group">
+            <label for="f-children-ages">Children Ages</label>
+            <input type="text" id="f-children-ages" placeholder="e.g. 5, 8, 12" />
+            <span class="field-hint">Comma-separated ages</span>
+          </div>
+          <div class="form-group">
+            <label for="f-dependents">Number of Dependents</label>
+            <input type="number" id="f-dependents" placeholder="e.g. 3" min="0" max="30" value="0" />
+            <span class="field-hint">Include children, elderly parents, others</span>
+          </div>
+          <div class="form-group">
+            <label for="f-employment">Employment Status <span class="required">*</span></label>
+            <select id="f-employment">
+              <option value="">Select status</option>
+              <option value="gov">Government Employee</option>
+              <option value="private">Private Sector Employee</option>
+              <option value="self">Self-Employed / Business Owner</option>
+              <option value="freelance">Freelancer / Gig Worker</option>
+              <option value="retired">Retired</option>
+              <option value="unemployed">Unemployed</option>
+            </select>
+          </div>
+        </div>
+        <div class="step-nav">
+          <div></div>
+          <button class="btn btn-primary" onclick="nextStep(2)">Next: Income Profile →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: INCOME PROFILE ── -->
+      <div class="step-panel" id="step-2">
+        <div class="step-header">
+          <div class="step-number">Step 2 of 5</div>
+          <h2 class="step-title">Income Profile</h2>
+          <p class="step-desc">Enter all monthly household income sources. All amounts in Malaysian Ringgit (RM).</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="i-salary">Monthly Salary (Primary)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="i-salary" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="i-spouse">Spouse Income (Monthly)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="i-spouse" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="i-side">Side Income (Monthly)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="i-side" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="i-rental">Rental Income (Monthly)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="i-rental" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="i-other">Other Income (Monthly)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="i-other" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+        </div>
+        <div class="auto-calc-card">
+          <div class="calc-label">Total Household Income (Monthly)</div>
+          <div class="calc-value" id="calc-income">RM 0.00</div>
+        </div>
+        <div class="step-nav">
+          <button class="btn btn-outline" onclick="prevStep(1)">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Next: Asset Profile →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: ASSET PROFILE ── -->
+      <div class="step-panel" id="step-3">
+        <div class="step-header">
+          <div class="step-number">Step 3 of 5</div>
+          <h2 class="step-title">Asset Profile</h2>
+          <p class="step-desc">Enter the current estimated value of all financial and physical assets. All amounts in Malaysian Ringgit (RM).</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="a-savings">Savings (Bank / Cash)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-savings" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-epf">EPF / KWSP Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-epf" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-asb">ASB Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-asb" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-th">Tabung Haji Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-th" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-shares">Shares / Unit Trust Value</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-shares" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-property">Property Value (Total)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-property" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-vehicle">Vehicle Value (Total)</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-vehicle" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="a-other">Other Assets</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="a-other" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+        </div>
+        <div class="auto-calc-card">
+          <div class="calc-label">Total Assets</div>
+          <div class="calc-value" id="calc-assets">RM 0.00</div>
+        </div>
+        <div class="step-nav">
+          <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep(4)">Next: Liabilities →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 4: LIABILITIES ── -->
+      <div class="step-panel" id="step-4">
+        <div class="step-header">
+          <div class="step-number">Step 4 of 5</div>
+          <h2 class="step-title">Liabilities</h2>
+          <p class="step-desc">Enter outstanding balances on all financing and debt obligations. All amounts in Malaysian Ringgit (RM).</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="l-home">Home Financing Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-home" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="l-vehicle">Vehicle Financing Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-vehicle" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="l-personal">Personal Financing Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-personal" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="l-education">Education Financing Balance</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-education" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="l-cc">Credit Card Debt</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-cc" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+          <div class="form-group">
+            <label for="l-other">Other Debt</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="l-other" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+        </div>
+        <div class="auto-calc-row">
+          <div class="auto-calc-card">
+            <div class="calc-label">Total Liabilities</div>
+            <div class="calc-value" id="calc-liabilities">RM 0.00</div>
+          </div>
+          <div class="auto-calc-card">
+            <div class="calc-label">Debt-to-Income Ratio</div>
+            <div class="calc-value" id="calc-dti">0.00%</div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep(5)">Next: Protection Profile →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 5: PROTECTION PROFILE ── -->
+      <div class="step-panel" id="step-5">
+        <div class="step-header">
+          <div class="step-number">Step 5 of 5</div>
+          <h2 class="step-title">Protection Profile</h2>
+          <p class="step-desc">Provide information about your existing financial protection and estate planning arrangements.</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group form-group--full">
+            <label for="p-family-takaful">Family Takaful Coverage Amount</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="p-family-takaful" placeholder="0.00" min="0" value="0" /></div>
+            <span class="field-hint">Enter 0 if none</span>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="p-medical-takaful">Medical Takaful Coverage Amount</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="p-medical-takaful" placeholder="0.00" min="0" value="0" /></div>
+            <span class="field-hint">Enter 0 if none</span>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="p-mrtt">MRTT / MRTA Coverage Amount</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="p-mrtt" placeholder="0.00" min="0" value="0" /></div>
+            <span class="field-hint">Mortgage Reducing Term Takaful / Assurance</span>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="p-emergency">Emergency Fund Amount</label>
+            <div class="input-prefix"><span>RM</span><input type="number" id="p-emergency" placeholder="0.00" min="0" value="0" /></div>
+          </div>
+
+          <!-- Yes/No toggles -->
+          <div class="form-group toggle-group">
+            <label>Do you have an existing Hibah arrangement?</label>
+            <div class="toggle-options">
+              <button class="toggle-btn active" id="hibah-no" onclick="setToggle('hibah','no')">No</button>
+              <button class="toggle-btn" id="hibah-yes" onclick="setToggle('hibah','yes')">Yes</button>
+            </div>
+            <input type="hidden" id="p-hibah" value="no" />
+          </div>
+          <div class="form-group toggle-group">
+            <label>Do you have an existing Wasiat (Islamic Will)?</label>
+            <div class="toggle-options">
+              <button class="toggle-btn active" id="wasiat-no" onclick="setToggle('wasiat','no')">No</button>
+              <button class="toggle-btn" id="wasiat-yes" onclick="setToggle('wasiat','yes')">Yes</button>
+            </div>
+            <input type="hidden" id="p-wasiat" value="no" />
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="generateResults()">
+            Generate NADI Report
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </div><!-- /assessment-body -->
+</div><!-- /page-assessment -->
+
+<!-- ═══════════════════════════════════════════
+     RESULTS PAGE
+═══════════════════════════════════════════ -->
+<div id="page-results" class="page">
+  <div class="sub-header no-print">
+    <div class="container sub-header-inner">
+      <button class="back-btn" onclick="showPage('page-assessment')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Edit Assessment
+      </button>
+      <div class="sub-header-brand">NADI Results</div>
+    </div>
+  </div>
+
+  <!-- Print Header (only shows when printing) -->
+  <div class="print-header">
+    <div class="print-logos">
+      <div class="logo-placeholder ukm-logo"><span class="logo-initials">UKM</span></div>
+      <div class="logo-placeholder fuu-logo"><span class="logo-initials">FUU</span></div>
+    </div>
+    <div class="print-title-block">
+      <div class="print-nadi-title">NADI Family Financial Readiness Report</div>
+      <div class="print-university">Faculty of Law (FUU) · Universiti Kebangsaan Malaysia (UKM)</div>
+      <div class="print-date" id="print-date"></div>
+    </div>
+  </div>
+
+  <div class="results-body container">
+
+    <!-- Score Banner -->
+    <div class="score-banner">
+      <div class="score-circle-wrap">
+        <svg class="score-svg" viewBox="0 0 120 120" width="160" height="160">
+          <circle class="score-track" cx="60" cy="60" r="52" />
+          <circle class="score-fill" id="score-arc" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="score-center">
+          <span class="score-number" id="score-display">0</span>
+          <span class="score-max">/100</span>
+        </div>
+      </div>
+      <div class="score-details">
+        <div class="score-label">NADI Family Financial Readiness Index</div>
+        <div class="score-badge" id="score-badge">—</div>
+        <div class="score-name" id="score-name">Assessing...</div>
+        <p class="score-interpretation" id="score-interpretation"></p>
+      </div>
+    </div>
+
+    <!-- Financial Summary Cards -->
+    <div class="summary-cards">
+      <div class="sum-card">
+        <div class="sum-label">Total Monthly Income</div>
+        <div class="sum-value" id="res-income">RM 0</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-label">Total Assets</div>
+        <div class="sum-value" id="res-assets">RM 0</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-label">Total Liabilities</div>
+        <div class="sum-value" id="res-liabilities">RM 0</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-label">Debt-to-Income Ratio</div>
+        <div class="sum-value" id="res-dti">0%</div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <h3 class="chart-title">Assets vs Liabilities</h3>
+        <canvas id="chart-asset-liability" height="220"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3 class="chart-title">Income Breakdown</h3>
+        <canvas id="chart-income" height="220"></canvas>
+      </div>
+    </div>
+
+    <!-- ── 5 Analysis Sections ── -->
+    <div class="analysis-section">
+      <h2 class="analysis-main-title">Analytical Assessment</h2>
+
+      <div class="analysis-card" id="an-dependency">
+        <div class="analysis-card-header">
+          <div class="analysis-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="analysis-card-title">Analysis 1 — Family Dependency</div>
+            <div class="analysis-risk-badge" id="badge-dependency"></div>
+          </div>
+        </div>
+        <p id="text-dependency" class="analysis-text"></p>
+      </div>
+
+      <div class="analysis-card" id="an-risk">
+        <div class="analysis-card-header">
+          <div class="analysis-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="analysis-card-title">Analysis 2 — Financial Risk</div>
+            <div class="analysis-risk-badge" id="badge-risk"></div>
+          </div>
+        </div>
+        <p id="text-risk" class="analysis-text"></p>
+      </div>
+
+      <div class="analysis-card" id="an-protection">
+        <div class="analysis-card-header">
+          <div class="analysis-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="analysis-card-title">Analysis 3 — Protection Adequacy</div>
+            <div class="analysis-risk-badge" id="badge-protection"></div>
+          </div>
+        </div>
+        <p id="text-protection" class="analysis-text"></p>
+      </div>
+
+      <div class="analysis-card" id="an-continuity">
+        <div class="analysis-card-header">
+          <div class="analysis-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="analysis-card-title">Analysis 4 — Financial Continuity</div>
+            <div class="analysis-risk-badge" id="badge-continuity"></div>
+          </div>
+        </div>
+        <p id="text-continuity" class="analysis-text"></p>
+      </div>
+
+      <div class="analysis-card" id="an-wealth">
+        <div class="analysis-card-header">
+          <div class="analysis-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div>
+            <div class="analysis-card-title">Analysis 5 — Wealth Preservation</div>
+            <div class="analysis-risk-badge" id="badge-wealth"></div>
+          </div>
+        </div>
+        <p id="text-wealth" class="analysis-text"></p>
+      </div>
+    </div>
+
+    <!-- Key Risks -->
+    <div class="risks-section">
+      <h2 class="section-title-sm">Key Financial Vulnerabilities</h2>
+      <div class="risks-grid" id="risks-grid"></div>
+    </div>
+
+    <!-- Recommended Actions -->
+    <div class="actions-section">
+      <h2 class="section-title-sm">Recommended Action Plan</h2>
+      <div class="actions-list" id="actions-list"></div>
+    </div>
+
+    <!-- Report Disclaimer -->
+    <div class="report-disclaimer">
+      <strong>Important Notice:</strong> This NADI report is generated for educational purposes only. The financial readiness index, analysis and recommendations do not constitute financial, legal, Takaful or investment advice. Users are advised to consult qualified financial planners and legal professionals for personalised guidance.
+      <br/><br/>
+      <em>Generated by NADI · Faculty of Law (FUU) · Universiti Kebangsaan Malaysia (UKM)</em>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="export-buttons no-print">
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print Report / Save as PDF
+      </button>
+      <button class="btn btn-outline" onclick="startNew()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Start New Assessment
+      </button>
+    </div>
+
+  </div><!-- /results-body -->
+</div><!-- /page-results -->
+
+<script src="script.js"></script>
+</body>
+</html>
