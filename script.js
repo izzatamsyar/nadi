@@ -765,18 +765,19 @@ function generateActions(analyses, score) {
 function renderResults(analyses, score, category) {
   const d = nadiData;
 
-  /* Score animation */
-  const scoreEl = document.getElementById('score-display');
-  const scoreArc = document.getElementById('score-arc');
-  const circumference = 2 * Math.PI * 52; // r=52
+  /* Score animation — CSS conic-gradient ring (print-safe) */
+  const scoreEl   = document.getElementById('score-display');
+  const scoreRing = document.getElementById('score-ring');
 
   let current = 0;
   const interval = setInterval(() => {
     current = Math.min(current + 1, score);
     scoreEl.textContent = current;
-    const dashoffset = circumference - (current / 100) * circumference;
-    scoreArc.style.strokeDashoffset = dashoffset;
-    scoreArc.style.strokeDasharray = circumference;
+    if (scoreRing) {
+      const pct = current;
+      scoreRing.style.background =
+        `conic-gradient(var(--teal) 0% ${pct}%, rgba(255,255,255,0.10) ${pct}% 100%)`;
+    }
     if (current >= score) clearInterval(interval);
   }, 18);
 
@@ -841,112 +842,72 @@ function set(id, val) {
 }
 
 /* ─────────────────────────────────────────────
-   CHART RENDERING (Chart.js) — 3 Donut Charts
+   CHART RENDERING — Pure CSS/HTML (print-safe)
+   No canvas, no Chart.js — renders perfectly in PDF
 ───────────────────────────────────────────── */
 
-/* Helper: build a donut chart */
-function buildDonut(canvasId, labels, data, colours) {
-  const ctx = document.getElementById(canvasId);
-  if (!ctx) return null;
-
-  // Filter zero values
-  const filteredLabels = [], filteredData = [], filteredColours = [];
-  labels.forEach((l, i) => {
-    if (data[i] > 0) {
-      filteredLabels.push(l);
-      filteredData.push(data[i]);
-      filteredColours.push(colours[i % colours.length]);
-    }
-  });
-
-  const hasData = filteredData.length > 0;
-
-  return new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: hasData ? filteredLabels : ['None declared'],
-      datasets: [{
-        data: hasData ? filteredData : [1],
-        backgroundColor: hasData ? filteredColours : ['#DDE0E6'],
-        borderWidth: 2,
-        borderColor: '#ffffff',
-        hoverOffset: 8
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: '65%',
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => hasData
-              ? ` ${ctx.label}: ${fmt(ctx.raw)} (${((ctx.raw / filteredData.reduce((a,b)=>a+b,0))*100).toFixed(1)}%)`
-              : ' No data'
-          }
-        }
-      }
-    }
-  });
-}
-
-/* Helper: render custom legend below chart */
-function buildLegend(legendId, labels, data, colours) {
-  const el = document.getElementById(legendId);
+/* Build a CSS horizontal bar chart with legend */
+function buildCssChart(containerId, labels, data, colours, totalLabel) {
+  const el = document.getElementById(containerId);
   if (!el) return;
+
   const total = data.reduce((a, b) => a + b, 0);
-  let html = '';
+
+  // Filter zero entries
+  const items = [];
   labels.forEach((l, i) => {
-    if (data[i] > 0) {
-      const pct = total > 0 ? ((data[i] / total) * 100).toFixed(1) : '0';
-      html += `<div class="legend-item">
-        <span class="legend-dot" style="background:${colours[i % colours.length]}"></span>
-        <span class="legend-label">${l}</span>
-        <span class="legend-value">${pct}%</span>
-      </div>`;
-    }
+    if (data[i] > 0) items.push({ label: l, value: data[i], colour: colours[i] });
   });
-  el.innerHTML = html || '<div class="legend-item"><span class="legend-label" style="color:#9BA3B0">No data entered</span></div>';
+
+  if (items.length === 0) {
+    el.innerHTML = '<p style="color:#9BA3B0;font-size:13px;padding:12px 0">No data entered</p>';
+    return;
+  }
+
+  // Sort descending
+  items.sort((a, b) => b.value - a.value);
+
+  let html = '';
+  items.forEach(item => {
+    const pct = ((item.value / total) * 100).toFixed(1);
+    const barW = Math.max(parseFloat(pct), 2);
+    html += `
+      <div class="css-bar-row">
+        <div class="css-bar-label">${item.label}</div>
+        <div class="css-bar-track">
+          <div class="css-bar-fill" style="width:${barW}%;background:${item.colour}"></div>
+        </div>
+        <div class="css-bar-pct">${pct}%</div>
+      </div>`;
+  });
+
+  el.innerHTML = html;
 }
 
 function renderCharts(d) {
-  // Destroy existing
-  Object.values(chartInstances).forEach(c => { if (c) c.destroy(); });
-  chartInstances = {};
-
-  /* ── ASSET BREAKDOWN DONUT ── */
-  const assetLabels  = ['Savings', 'EPF/KWSP', 'ASB', 'Tabung Haji', 'Shares', 'Property', 'Vehicle', 'Other'];
-  const assetData    = [d.savings, d.epf, d.asb, d.th, d.shares, d.property, d.vehicle, d.otherAss];
+  // Asset breakdown
+  const assetLabels  = ['Savings','EPF/KWSP','ASB','Tabung Haji','Shares','Property','Vehicle','Other'];
+  const assetData    = [d.savings,d.epf,d.asb,d.th,d.shares,d.property,d.vehicle,d.otherAss];
   const assetColours = ['#0E7C7B','#14A8A7','#1A3A6B','#2A5298','#0D4F8B','#4A90D9','#5DADE2','#9BA3B0'];
+  buildCssChart('css-chart-assets', assetLabels, assetData, assetColours);
+  const at = document.getElementById('chart-assets-total');
+  if (at) at.textContent = 'Total: ' + fmt(d.totalAssets);
 
-  chartInstances.assets = buildDonut('chart-assets-donut', assetLabels, assetData, assetColours);
-  buildLegend('legend-assets', assetLabels, assetData, assetColours);
+  // Liability breakdown
+  const liabLabels  = ['Home Financing','Vehicle Financing','Personal','Education','Credit Card','Other'];
+  const liabData    = [d.lHome,d.lVehicle,d.lPersonal,d.lEdu,d.lCC,d.lOther];
+  const liabColours = ['#C0392B','#E74C3C','#D68910','#E67E22','#8E44AD','#7D3C98'];
+  buildCssChart('css-chart-liab', liabLabels, liabData, liabColours);
+  const lt = document.getElementById('chart-liab-total');
+  if (lt) lt.textContent = 'Total: ' + fmt(d.totalLiabilities);
 
-  const assTotal = document.getElementById('chart-assets-total');
-  if (assTotal) assTotal.textContent = 'Total: ' + fmt(d.totalAssets);
-
-  /* ── LIABILITY BREAKDOWN DONUT ── */
-  const liabLabels  = ['Home Financing', 'Vehicle Financing', 'Personal', 'Education', 'Credit Card', 'Other'];
-  const liabData    = [d.lHome, d.lVehicle, d.lPersonal, d.lEdu, d.lCC, d.lOther];
-  const liabColours = ['#C0392B','#E74C3C','#D68910','#E67E22','#8E44AD','#C0392B'];
-
-  chartInstances.liab = buildDonut('chart-liab-donut', liabLabels, liabData, liabColours);
-  buildLegend('legend-liab', liabLabels, liabData, liabColours);
-
-  const liabTotal = document.getElementById('chart-liab-total');
-  if (liabTotal) liabTotal.textContent = 'Total: ' + fmt(d.totalLiabilities);
-
-  /* ── INCOME BREAKDOWN DONUT ── */
-  const incomeLabels  = ['Salary', 'Spouse', 'Side Income', 'Rental', 'Other'];
-  const incomeData    = [d.salary, d.spouse, d.side, d.rental, d.otherInc];
+  // Income breakdown
+  const incomeLabels  = ['Salary','Spouse','Side Income','Rental','Other'];
+  const incomeData    = [d.salary,d.spouse,d.side,d.rental,d.otherInc];
   const incomeColours = ['#0E7C7B','#14A8A7','#1A3A6B','#142850','#9BA3B0'];
-
-  chartInstances.income = buildDonut('chart-income', incomeLabels, incomeData, incomeColours);
-  buildLegend('legend-income', incomeLabels, incomeData, incomeColours);
-
-  const incTotal = document.getElementById('chart-income-total');
-  if (incTotal) incTotal.textContent = 'Total: ' + fmt(d.totalIncome) + '/month';
+  buildCssChart('css-chart-income', incomeLabels, incomeData, incomeColours);
+  const it = document.getElementById('chart-income-total');
+  if (it) it.textContent = 'Total: ' + fmt(d.totalIncome) + '/month';
 }
 
 /* ─────────────────────────────────────────────

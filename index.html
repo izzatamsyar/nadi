@@ -579,166 +579,135 @@
 
   <div class="results-body container">
 
-    <!-- Score Banner -->
-    <div class="score-banner">
-      <div class="score-circle-wrap">
-        <svg class="score-svg" viewBox="0 0 120 120" width="160" height="160">
-          <circle class="score-track" cx="60" cy="60" r="52" />
-          <circle class="score-fill" id="score-arc" cx="60" cy="60" r="52" />
-        </svg>
-        <div class="score-center">
-          <span class="score-number" id="score-display">0</span>
-          <span class="score-max">/100</span>
+    <!-- ── PAGE 1: Score + Summary + Charts ── -->
+    <div class="rpt-page">
+
+      <!-- Score Banner — compact horizontal -->
+      <div class="score-banner">
+        <!-- Left: CSS ring gauge (print-safe) -->
+        <div class="score-ring-wrap">
+          <div class="score-ring" id="score-ring">
+            <div class="score-ring-inner">
+              <span class="score-number" id="score-display">0</span>
+              <span class="score-max">/100</span>
+            </div>
+          </div>
+        </div>
+        <!-- Right: details -->
+        <div class="score-details">
+          <div class="score-label">NADI Family Financial Readiness Index</div>
+          <div class="score-badge" id="score-badge">—</div>
+          <div class="score-name" id="score-name">Assessing...</div>
+          <p class="score-interpretation" id="score-interpretation"></p>
         </div>
       </div>
-      <div class="score-details">
-        <div class="score-label">NADI Family Financial Readiness Index</div>
-        <div class="score-badge" id="score-badge">—</div>
-        <div class="score-name" id="score-name">Assessing...</div>
-        <p class="score-interpretation" id="score-interpretation"></p>
+
+      <!-- 4 Summary Cards -->
+      <div class="summary-cards">
+        <div class="sum-card">
+          <div class="sum-label">Total Monthly Income</div>
+          <div class="sum-value" id="res-income">RM 0</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-label">Total Assets</div>
+          <div class="sum-value" id="res-assets">RM 0</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-label">Total Liabilities</div>
+          <div class="sum-value" id="res-liabilities">RM 0</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-label">Debt-to-Income Ratio</div>
+          <div class="sum-value" id="res-dti">0%</div>
+        </div>
+      </div>
+
+      <!-- 3 Pure-CSS/HTML Charts (print-safe) -->
+      <div class="charts-row--3">
+        <div class="chart-card">
+          <div class="chart-title">Asset Breakdown</div>
+          <div class="chart-subtitle" id="chart-assets-total"></div>
+          <div class="css-chart" id="css-chart-assets"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Liability Breakdown</div>
+          <div class="chart-subtitle" id="chart-liab-total"></div>
+          <div class="css-chart" id="css-chart-liab"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Income Breakdown</div>
+          <div class="chart-subtitle" id="chart-income-total"></div>
+          <div class="css-chart" id="css-chart-income"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Financial Summary Cards -->
-    <div class="summary-cards">
-      <div class="sum-card">
-        <div class="sum-label">Total Monthly Income</div>
-        <div class="sum-value" id="res-income">RM 0</div>
-      </div>
-      <div class="sum-card">
-        <div class="sum-label">Total Assets</div>
-        <div class="sum-value" id="res-assets">RM 0</div>
-      </div>
-      <div class="sum-card">
-        <div class="sum-label">Total Liabilities</div>
-        <div class="sum-value" id="res-liabilities">RM 0</div>
-      </div>
-      <div class="sum-card">
-        <div class="sum-label">Debt-to-Income Ratio</div>
-        <div class="sum-value" id="res-dti">0%</div>
-      </div>
-    </div>
+    <!-- ── PAGE 2: Analysis ── -->
+    <div class="rpt-page">
+      <h2 class="rpt-section-title">Analytical Assessment</h2>
 
-    <!-- Charts Row -->
-    <div class="charts-row charts-row--3">
-      <div class="chart-card">
-        <h3 class="chart-title">Asset Breakdown</h3>
-        <p class="chart-subtitle" id="chart-assets-total"></p>
-        <canvas id="chart-assets-donut" height="240"></canvas>
-        <div class="donut-legend" id="legend-assets"></div>
-      </div>
-      <div class="chart-card">
-        <h3 class="chart-title">Liability Breakdown</h3>
-        <p class="chart-subtitle" id="chart-liab-total"></p>
-        <canvas id="chart-liab-donut" height="240"></canvas>
-        <div class="donut-legend" id="legend-liab"></div>
-      </div>
-      <div class="chart-card">
-        <h3 class="chart-title">Income Breakdown</h3>
-        <p class="chart-subtitle" id="chart-income-total"></p>
-        <canvas id="chart-income" height="240"></canvas>
-        <div class="donut-legend" id="legend-income"></div>
-      </div>
-    </div>
-
-    <!-- ── 5 Analysis Sections ── -->
-    <div class="analysis-section">
-      <h2 class="analysis-main-title">Analytical Assessment</h2>
-
-      <div class="analysis-card" id="an-dependency">
-        <div class="analysis-card-header">
-          <div class="analysis-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <div class="analysis-card-title">Analysis 1 — Family Dependency</div>
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <div class="analysis-card-header">
+            <div class="analysis-card-title">1 — Family Dependency</div>
             <div class="analysis-risk-badge" id="badge-dependency"></div>
           </div>
+          <p id="text-dependency" class="analysis-text"></p>
         </div>
-        <p id="text-dependency" class="analysis-text"></p>
-      </div>
-
-      <div class="analysis-card" id="an-risk">
-        <div class="analysis-card-header">
-          <div class="analysis-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <div>
-            <div class="analysis-card-title">Analysis 2 — Financial Risk</div>
+        <div class="analysis-card">
+          <div class="analysis-card-header">
+            <div class="analysis-card-title">2 — Financial Risk</div>
             <div class="analysis-risk-badge" id="badge-risk"></div>
           </div>
+          <p id="text-risk" class="analysis-text"></p>
         </div>
-        <p id="text-risk" class="analysis-text"></p>
-      </div>
-
-      <div class="analysis-card" id="an-protection">
-        <div class="analysis-card-header">
-          <div class="analysis-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <div class="analysis-card-title">Analysis 3 — Protection Adequacy</div>
+        <div class="analysis-card">
+          <div class="analysis-card-header">
+            <div class="analysis-card-title">3 — Protection Adequacy</div>
             <div class="analysis-risk-badge" id="badge-protection"></div>
           </div>
+          <p id="text-protection" class="analysis-text"></p>
         </div>
-        <p id="text-protection" class="analysis-text"></p>
-      </div>
-
-      <div class="analysis-card" id="an-continuity">
-        <div class="analysis-card-header">
-          <div class="analysis-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <div>
-            <div class="analysis-card-title">Analysis 4 — Financial Continuity</div>
+        <div class="analysis-card">
+          <div class="analysis-card-header">
+            <div class="analysis-card-title">4 — Financial Continuity</div>
             <div class="analysis-risk-badge" id="badge-continuity"></div>
           </div>
+          <p id="text-continuity" class="analysis-text"></p>
         </div>
-        <p id="text-continuity" class="analysis-text"></p>
-      </div>
-
-      <div class="analysis-card" id="an-wealth">
-        <div class="analysis-card-header">
-          <div class="analysis-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          </div>
-          <div>
-            <div class="analysis-card-title">Analysis 5 — Wealth Preservation</div>
+        <div class="analysis-card analysis-card--full">
+          <div class="analysis-card-header">
+            <div class="analysis-card-title">5 — Wealth Preservation</div>
             <div class="analysis-risk-badge" id="badge-wealth"></div>
           </div>
+          <p id="text-wealth" class="analysis-text"></p>
         </div>
-        <p id="text-wealth" class="analysis-text"></p>
       </div>
     </div>
 
-    <!-- Key Risks -->
-    <div class="risks-section">
-      <h2 class="section-title-sm">Key Financial Vulnerabilities</h2>
+    <!-- ── PAGE 3: Risks + Actions + Disclaimer ── -->
+    <div class="rpt-page">
+      <h2 class="rpt-section-title">Key Financial Vulnerabilities</h2>
       <div class="risks-grid" id="risks-grid"></div>
-    </div>
 
-    <!-- Recommended Actions -->
-    <div class="actions-section">
-      <h2 class="section-title-sm">Recommended Action Plan</h2>
+      <h2 class="rpt-section-title" style="margin-top:28px">Recommended Action Plan</h2>
       <div class="actions-list" id="actions-list"></div>
-    </div>
 
-    <!-- Report Disclaimer -->
-    <div class="report-disclaimer">
-      <strong>Important Notice:</strong> This NADI report is generated for educational purposes only. The financial readiness index, analysis and recommendations do not constitute financial, legal, Takaful or investment advice. Users are advised to consult qualified financial planners and legal professionals for personalised guidance.
-      <br/><br/>
-      <em>Generated by NADI · Dr Izzat Amsyar @ FUU 2026</em>
+      <div class="report-disclaimer">
+        <strong>Important Notice:</strong> This NADI report is generated for educational purposes only and does not constitute financial, legal, Takaful or investment advice.
+        <br/><em>Generated by NADI · Dr Izzat Amsyar @ FUU 2026</em>
+      </div>
     </div>
 
     <!-- Export Buttons -->
     <div class="export-buttons no-print">
       <button class="btn btn-primary" onclick="window.print()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Print Report / Save as PDF
+        Print / Save as PDF
       </button>
       <button class="btn btn-outline" onclick="startNew()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        Start New Assessment
+        New Assessment
       </button>
     </div>
 
