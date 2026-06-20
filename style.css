@@ -6,19 +6,20 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
-  --navy:       #0D1F3C;   /* Deep Navy Blue — primary brand */
-  --navy-mid:   #142850;   /* Mid Navy — sections */
-  --navy-light: #1A3A6B;   /* Lighter Navy — accents */
-  --teal:       #0E7C7B;   /* Teal — primary accent */
-  --teal-light: #14A8A7;   /* Light Teal — hover states */
-  --teal-pale:  #E6F4F4;   /* Pale Teal — backgrounds */
+  /* ── MAROON + GOLD — UKM Official Theme ── */
+  --navy:       #5C0A0A;   /* Deep Maroon — primary brand */
+  --navy-mid:   #7A0E0E;   /* Mid Maroon — sections */
+  --navy-light: #9B1515;   /* Lighter Maroon — accents */
+  --teal:       #B8860B;   /* Dark Gold — primary accent */
+  --teal-light: #D4A017;   /* Light Gold — hover states */
+  --teal-pale:  #FDF6E3;   /* Pale Gold — backgrounds */
   --white:      #FFFFFF;
-  --grey-50:    #F7F8FA;
-  --grey-100:   #EEF0F3;
-  --grey-200:   #DDE0E6;
-  --grey-400:   #9BA3B0;
-  --grey-600:   #5A6170;
-  --grey-800:   #2C3340;
+  --grey-50:    #FAF7F2;
+  --grey-100:   #F2EDE4;
+  --grey-200:   #E0D5C5;
+  --grey-400:   #A89880;
+  --grey-600:   #6B5B4E;
+  --grey-800:   #2C1F1A;
   --critical:   #C0392B;
   --vulnerable: #D68910;
   --developing: #1F618D;
@@ -26,9 +27,9 @@
   --radius-sm:  6px;
   --radius:     10px;
   --radius-lg:  16px;
-  --shadow-sm:  0 1px 3px rgba(13,31,60,0.08);
-  --shadow:     0 4px 16px rgba(13,31,60,0.10);
-  --shadow-lg:  0 8px 32px rgba(13,31,60,0.14);
+  --shadow-sm:  0 1px 3px rgba(92,10,10,0.08);
+  --shadow:     0 4px 16px rgba(92,10,10,0.12);
+  --shadow-lg:  0 8px 32px rgba(92,10,10,0.18);
   --transition: 0.22s ease;
   --font-body:  'Inter', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
@@ -178,7 +179,7 @@ a { color: var(--teal); text-decoration: none; }
   bottom: -80px;
   width: 520px;
   height: 520px;
-  border: 2px solid rgba(14,124,123,0.18);
+  border: 2px solid rgba(212,160,23,0.18);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -189,9 +190,9 @@ a { color: var(--teal); text-decoration: none; }
 }
 .hero-badge {
   display: inline-block;
-  background: rgba(14,124,123,0.2);
+  background: rgba(212,160,23,0.18);
   color: var(--teal-light);
-  border: 1px solid rgba(14,124,123,0.35);
+  border: 1px solid rgba(212,160,23,0.40);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.6px;
@@ -274,14 +275,14 @@ a { color: var(--teal); text-decoration: none; }
 .ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(14,124,123,0.15);
+  border: 1px solid rgba(212,160,23,0.20);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .ring-1 { width: 220px; height: 220px; }
-.ring-2 { width: 360px; height: 360px; border-color: rgba(14,124,123,0.10); }
-.ring-3 { width: 500px; height: 500px; border-color: rgba(14,124,123,0.06); }
+.ring-2 { width: 360px; height: 360px; border-color: rgba(212,160,23,0.13); }
+.ring-3 { width: 500px; height: 500px; border-color: rgba(212,160,23,0.07); }
 
 /* ═══════════════════════════════════════════════════
    FEATURES
@@ -332,8 +333,8 @@ a { color: var(--teal); text-decoration: none; }
 }
 .feature-card--accent .feature-title { color: var(--white); }
 .feature-card--accent .feature-desc { color: rgba(255,255,255,0.65); }
-.feature-card--accent .feature-icon { background: rgba(14,124,123,0.2); color: var(--teal-light); }
-.feature-card--accent .feature-tag { background: rgba(14,124,123,0.2); color: var(--teal-light); border-color: rgba(14,124,123,0.3); }
+.feature-card--accent .feature-icon { background: rgba(212,160,23,0.18); color: var(--teal-light); }
+.feature-card--accent .feature-tag { background: rgba(212,160,23,0.18); color: var(--teal-light); border-color: rgba(14,124,123,0.3); }
 .feature-icon {
   width: 54px; height: 54px;
   background: var(--teal-pale);
@@ -1080,7 +1081,7 @@ a { color: var(--teal); text-decoration: none; }
 
 /* ── Hero: richer gradient + teal glow ── */
 .hero {
-  background: linear-gradient(135deg, #071526 0%, #0D1F3C 50%, #0A2A40 100%);
+  background: linear-gradient(135deg, #2A0303 0%, #5C0A0A 50%, #7A0E0E 100%);
   padding: 110px 0 100px;
 }
 .hero::before {
@@ -1090,12 +1091,12 @@ a { color: var(--teal); text-decoration: none; }
   left: -100px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(14,124,123,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212,160,23,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero-nadi {
   font-size: clamp(72px, 11vw, 108px);
-  background: linear-gradient(135deg, #FFFFFF 0%, #A8D8D8 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFD77A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1141,7 +1142,7 @@ a { color: var(--teal); text-decoration: none; }
 
 /* ── Feature cards: more depth ── */
 .features-section {
-  background: #F0F4F8;
+  background: #FAF5EC;
 }
 .feature-card {
   border-radius: 14px;
@@ -1154,11 +1155,11 @@ a { color: var(--teal); text-decoration: none; }
   position: absolute;
   top: 0; right: 0;
   width: 120px; height: 120px;
-  background: radial-gradient(circle, rgba(14,124,123,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212,160,23,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 .feature-card--accent::before {
-  background: radial-gradient(circle, rgba(14,168,167,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212,160,23,0.18) 0%, transparent 70%);
 }
 .feature-title { font-size: 18px; font-weight: 700; }
 .feature-icon {
@@ -1169,14 +1170,14 @@ a { color: var(--teal); text-decoration: none; }
 
 /* ── Stats bar: bolder ── */
 .stats-bar {
-  background: linear-gradient(135deg, #071526, #0D1F3C);
+  background: linear-gradient(135deg, #2A0303, #5C0A0A);
   padding: 48px 0;
 }
 .stat-number { font-size: 40px; }
 
 /* ── Assessment form: card wrapper ── */
 .assessment-body {
-  background: linear-gradient(180deg, #EEF2F7 0%, #F7F8FA 100%);
+  background: linear-gradient(180deg, #F5EDE0 0%, #FAF7F2 100%);
 }
 .step-panel.active {
   background: var(--white);
@@ -1213,7 +1214,7 @@ a { color: var(--teal); text-decoration: none; }
 
 /* ── Results: score banner upgrade ── */
 .score-banner {
-  background: linear-gradient(135deg, #071526 0%, #0D1F3C 60%, #0A2A40 100%);
+  background: linear-gradient(135deg, #2A0303 0%, #5C0A0A 60%, #7A0E0E 100%);
   border-radius: 20px;
   padding: 48px 48px;
   box-shadow: 0 8px 40px rgba(13,31,60,0.25);
@@ -1225,7 +1226,7 @@ a { color: var(--teal); text-decoration: none; }
   position: absolute;
   top: -80px; right: -80px;
   width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(14,124,123,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212,160,23,0.18) 0%, transparent 70%);
   pointer-events: none;
 }
 .score-number { font-size: 48px; font-weight: 900; }
@@ -1268,7 +1269,7 @@ a { color: var(--teal); text-decoration: none; }
 
 /* ── Footer: subtle gradient ── */
 .site-footer {
-  background: linear-gradient(180deg, #0A1929, #071526);
+  background: linear-gradient(180deg, #3D0606, #2A0303);
 }
 
 /* ── Buttons: more refined ── */
@@ -1299,4 +1300,143 @@ a { color: var(--teal); text-decoration: none; }
   .score-banner { padding: 28px 20px; }
   .ukm-real-logo { height: 36px; width: auto; }
   .fuu-real-logo { height: 28px; width: auto; }
+}
+
+/* ═══════════════════════════════════════════════════
+   MAROON + GOLD — Islamic Geometric Theme Patch
+═══════════════════════════════════════════════════ */
+
+/* Hero Islamic pattern overlay */
+.hero-bg-islamic {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Radial vignette — dark edges, lighter centre */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(92,10,10,0.0) 0%,
+    rgba(42,3,3,0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero inner must sit above pattern */
+.hero-inner { z-index: 2; position: relative; }
+
+/* Gold teal-pale for feature cards hover */
+.feature-card:hover { box-shadow: 0 8px 32px rgba(92,10,10,0.14); }
+
+/* Gold accent line on hero NADI */
+.hero-nadi::after {
+  background: linear-gradient(90deg, #B8860B, #FFD700);
+}
+
+/* Gold teal-light colour fix for hero badge */
+.hero-badge {
+  background: rgba(184,134,11,0.18);
+  color: #D4A017;
+  border-color: rgba(184,134,11,0.40);
+}
+
+/* Tagline gold */
+.hero-tagline { color: #D4A017; }
+
+/* Hero desc left border gold */
+.hero-desc { border-left-color: rgba(184,134,11,0.55); }
+
+/* Section label gold */
+.section-label { color: #9B6B00; }
+
+/* Progress step active — maroon */
+.progress-step.active .ps-circle { background: var(--navy); border-color: var(--navy); }
+.progress-step.active .ps-label { color: var(--navy); }
+.progress-step.done .ps-circle { background: var(--teal); border-color: var(--teal); }
+
+/* Score arc gold */
+.score-fill { stroke: #D4A017; }
+
+/* Sum card top border gold */
+.sum-card { border-top-color: #B8860B; }
+
+/* Analysis card left border gold */
+.analysis-card { border-left-color: #B8860B; }
+.analysis-icon { background: #FDF6E3; color: #9B6B00; }
+
+/* Action number circle — maroon */
+.action-num { background: var(--navy); }
+
+/* Feature icon gold bg */
+.feature-icon { background: #FDF6E3; color: #9B6B00; }
+.feature-tag { color: #9B6B00; background: #FDF6E3; border-color: rgba(184,134,11,0.25); }
+
+/* Toggle active — maroon */
+.toggle-btn.active { background: var(--navy); border-color: var(--navy); }
+.toggle-btn:hover:not(.active) { border-color: var(--navy); color: var(--navy); }
+
+/* Nav link hover */
+.nav-link:hover { color: var(--navy); background: var(--teal-pale); }
+
+/* Back btn hover */
+.back-btn:hover { color: var(--navy); background: var(--teal-pale); }
+
+/* Sub header brand */
+.sub-header-brand { color: var(--navy); }
+
+/* Footer NADI wordmark gold */
+.footer-nadi { color: #D4A017; }
+
+/* Stats bar divider */
+.stat-divider { background: rgba(212,160,23,0.2); }
+
+/* Hero developer box */
+.hero-developer {
+  background: rgba(212,160,23,0.08);
+  border-color: rgba(212,160,23,0.20);
+}
+.dev-label { color: rgba(255,255,255,0.5); }
+.dev-name { color: rgba(255,255,255,0.85); }
+
+/* Feature card accent (middle card) — deep maroon */
+.feature-card--accent {
+  background: linear-gradient(145deg, #5C0A0A, #7A0E0E);
+}
+.feature-card--accent .feature-icon { background: rgba(212,160,23,0.18); color: #D4A017; }
+.feature-card--accent .feature-tag { background: rgba(212,160,23,0.15); color: #D4A017; border-color: rgba(212,160,23,0.3); }
+
+/* Input focus — maroon ring */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(92,10,10,0.10);
+}
+
+/* Btn primary — maroon gradient */
+.btn-primary {
+  background: linear-gradient(135deg, #7A0E0E, #9B1515);
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(92,10,10,0.30);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #9B1515, #B01C1C);
+  box-shadow: 0 6px 20px rgba(92,10,10,0.40);
+}
+
+/* Btn outline — maroon */
+.btn-outline { color: var(--navy); border-color: var(--navy); }
+.btn-outline:hover { background: var(--teal-pale); }
+
+/* Score banner radial */
+.score-banner::before {
+  background: radial-gradient(circle, rgba(212,160,23,0.12) 0%, transparent 70%);
+}
+
+/* Hero before radial */
+.hero::before {
+  background: radial-gradient(circle, rgba(212,160,23,0.10) 0%, transparent 70%);
 }
