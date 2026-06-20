@@ -620,14 +620,24 @@
     </div>
 
     <!-- Charts Row -->
-    <div class="charts-row">
+    <div class="charts-row charts-row--3">
       <div class="chart-card">
-        <h3 class="chart-title">Assets vs Liabilities</h3>
-        <canvas id="chart-asset-liability" height="220"></canvas>
+        <h3 class="chart-title">Asset Breakdown</h3>
+        <p class="chart-subtitle" id="chart-assets-total"></p>
+        <canvas id="chart-assets-donut" height="240"></canvas>
+        <div class="donut-legend" id="legend-assets"></div>
+      </div>
+      <div class="chart-card">
+        <h3 class="chart-title">Liability Breakdown</h3>
+        <p class="chart-subtitle" id="chart-liab-total"></p>
+        <canvas id="chart-liab-donut" height="240"></canvas>
+        <div class="donut-legend" id="legend-liab"></div>
       </div>
       <div class="chart-card">
         <h3 class="chart-title">Income Breakdown</h3>
-        <canvas id="chart-income" height="220"></canvas>
+        <p class="chart-subtitle" id="chart-income-total"></p>
+        <canvas id="chart-income" height="240"></canvas>
+        <div class="donut-legend" id="legend-income"></div>
       </div>
     </div>
 

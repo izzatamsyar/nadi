@@ -841,112 +841,112 @@ function set(id, val) {
 }
 
 /* ─────────────────────────────────────────────
-   CHART RENDERING (Chart.js)
+   CHART RENDERING (Chart.js) — 3 Donut Charts
 ───────────────────────────────────────────── */
-function renderCharts(d) {
-  // Destroy existing charts
-  if (chartInstances.assetLiability) chartInstances.assetLiability.destroy();
-  if (chartInstances.income) chartInstances.income.destroy();
 
-  const chartDefaults = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: {
-          font: { family: 'Inter', size: 12 },
-          color: '#5A6170'
-        }
-      },
-      tooltip: {
-        callbacks: {
-          label: ctx => ' ' + fmt(ctx.raw)
+/* Helper: build a donut chart */
+function buildDonut(canvasId, labels, data, colours) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return null;
+
+  // Filter zero values
+  const filteredLabels = [], filteredData = [], filteredColours = [];
+  labels.forEach((l, i) => {
+    if (data[i] > 0) {
+      filteredLabels.push(l);
+      filteredData.push(data[i]);
+      filteredColours.push(colours[i % colours.length]);
+    }
+  });
+
+  const hasData = filteredData.length > 0;
+
+  return new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: hasData ? filteredLabels : ['None declared'],
+      datasets: [{
+        data: hasData ? filteredData : [1],
+        backgroundColor: hasData ? filteredColours : ['#DDE0E6'],
+        borderWidth: 2,
+        borderColor: '#ffffff',
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '65%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => hasData
+              ? ` ${ctx.label}: ${fmt(ctx.raw)} (${((ctx.raw / filteredData.reduce((a,b)=>a+b,0))*100).toFixed(1)}%)`
+              : ' No data'
+          }
         }
       }
     }
-  };
+  });
+}
 
-  /* Asset vs Liability Bar Chart */
-  const alCtx = document.getElementById('chart-asset-liability');
-  if (alCtx) {
-    chartInstances.assetLiability = new Chart(alCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Savings', 'EPF/KWSP', 'ASB', 'Tabung Haji', 'Shares', 'Property', 'Vehicle', 'Other Assets', 'Home Financing', 'Vehicle Financing', 'Personal', 'Education', 'Credit Card', 'Other Debt'],
-        datasets: [
-          {
-            label: 'Assets',
-            data: [d.savings, d.epf, d.asb, d.th, d.shares, d.property, d.vehicle, d.otherAss, 0, 0, 0, 0, 0, 0],
-            backgroundColor: '#0E7C7B',
-            borderRadius: 4,
-          },
-          {
-            label: 'Liabilities',
-            data: [0, 0, 0, 0, 0, 0, 0, 0, d.lHome, d.lVehicle, d.lPersonal, d.lEdu, d.lCC, d.lOther],
-            backgroundColor: '#C0392B',
-            borderRadius: 4,
-          }
-        ]
-      },
-      options: {
-        ...chartDefaults,
-        scales: {
-          y: {
-            ticks: {
-              font: { family: 'Inter', size: 11 },
-              color: '#9BA3B0',
-              callback: v => fmtShort(v)
-            },
-            grid: { color: 'rgba(0,0,0,0.05)' }
-          },
-          x: {
-            ticks: {
-              font: { family: 'Inter', size: 10 },
-              color: '#9BA3B0',
-              maxRotation: 45
-            },
-            grid: { display: false }
-          }
-        }
-      }
-    });
-  }
+/* Helper: render custom legend below chart */
+function buildLegend(legendId, labels, data, colours) {
+  const el = document.getElementById(legendId);
+  if (!el) return;
+  const total = data.reduce((a, b) => a + b, 0);
+  let html = '';
+  labels.forEach((l, i) => {
+    if (data[i] > 0) {
+      const pct = total > 0 ? ((data[i] / total) * 100).toFixed(1) : '0';
+      html += `<div class="legend-item">
+        <span class="legend-dot" style="background:${colours[i % colours.length]}"></span>
+        <span class="legend-label">${l}</span>
+        <span class="legend-value">${pct}%</span>
+      </div>`;
+    }
+  });
+  el.innerHTML = html || '<div class="legend-item"><span class="legend-label" style="color:#9BA3B0">No data entered</span></div>';
+}
 
-  /* Income Breakdown Doughnut */
-  const incCtx = document.getElementById('chart-income');
-  if (incCtx) {
-    const incomeLabels = ['Salary', 'Spouse', 'Side Income', 'Rental', 'Other'];
-    const incomeData   = [d.salary, d.spouse, d.side, d.rental, d.otherInc];
-    const nonZeroLabels = [], nonZeroData = [];
-    incomeLabels.forEach((l, i) => {
-      if (incomeData[i] > 0) { nonZeroLabels.push(l); nonZeroData.push(incomeData[i]); }
-    });
+function renderCharts(d) {
+  // Destroy existing
+  Object.values(chartInstances).forEach(c => { if (c) c.destroy(); });
+  chartInstances = {};
 
-    chartInstances.income = new Chart(incCtx, {
-      type: 'doughnut',
-      data: {
-        labels: nonZeroLabels.length ? nonZeroLabels : ['No Income'],
-        datasets: [{
-          data: nonZeroData.length ? nonZeroData : [1],
-          backgroundColor: ['#0E7C7B','#14A8A7','#1A3A6B','#142850','#9BA3B0'],
-          borderWidth: 0,
-          hoverOffset: 6
-        }]
-      },
-      options: {
-        ...chartDefaults,
-        cutout: '62%',
-        plugins: {
-          ...chartDefaults.plugins,
-          tooltip: {
-            callbacks: {
-              label: ctx => ` ${ctx.label}: ${fmt(ctx.raw)}`
-            }
-          }
-        }
-      }
-    });
-  }
+  /* ── ASSET BREAKDOWN DONUT ── */
+  const assetLabels  = ['Savings', 'EPF/KWSP', 'ASB', 'Tabung Haji', 'Shares', 'Property', 'Vehicle', 'Other'];
+  const assetData    = [d.savings, d.epf, d.asb, d.th, d.shares, d.property, d.vehicle, d.otherAss];
+  const assetColours = ['#0E7C7B','#14A8A7','#1A3A6B','#2A5298','#0D4F8B','#4A90D9','#5DADE2','#9BA3B0'];
+
+  chartInstances.assets = buildDonut('chart-assets-donut', assetLabels, assetData, assetColours);
+  buildLegend('legend-assets', assetLabels, assetData, assetColours);
+
+  const assTotal = document.getElementById('chart-assets-total');
+  if (assTotal) assTotal.textContent = 'Total: ' + fmt(d.totalAssets);
+
+  /* ── LIABILITY BREAKDOWN DONUT ── */
+  const liabLabels  = ['Home Financing', 'Vehicle Financing', 'Personal', 'Education', 'Credit Card', 'Other'];
+  const liabData    = [d.lHome, d.lVehicle, d.lPersonal, d.lEdu, d.lCC, d.lOther];
+  const liabColours = ['#C0392B','#E74C3C','#D68910','#E67E22','#8E44AD','#C0392B'];
+
+  chartInstances.liab = buildDonut('chart-liab-donut', liabLabels, liabData, liabColours);
+  buildLegend('legend-liab', liabLabels, liabData, liabColours);
+
+  const liabTotal = document.getElementById('chart-liab-total');
+  if (liabTotal) liabTotal.textContent = 'Total: ' + fmt(d.totalLiabilities);
+
+  /* ── INCOME BREAKDOWN DONUT ── */
+  const incomeLabels  = ['Salary', 'Spouse', 'Side Income', 'Rental', 'Other'];
+  const incomeData    = [d.salary, d.spouse, d.side, d.rental, d.otherInc];
+  const incomeColours = ['#0E7C7B','#14A8A7','#1A3A6B','#142850','#9BA3B0'];
+
+  chartInstances.income = buildDonut('chart-income', incomeLabels, incomeData, incomeColours);
+  buildLegend('legend-income', incomeLabels, incomeData, incomeColours);
+
+  const incTotal = document.getElementById('chart-income-total');
+  if (incTotal) incTotal.textContent = 'Total: ' + fmt(d.totalIncome) + '/month';
 }
 
 /* ─────────────────────────────────────────────
